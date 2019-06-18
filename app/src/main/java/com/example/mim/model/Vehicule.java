@@ -47,16 +47,20 @@ public class Vehicule {
     @ColumnInfo(name="id_contratLocation")
     private int idContratLocation;
 
+    @ColumnInfo(name="id_agence")
+    private int idAgence;
+
     @Ignore
     public Vehicule() {}
 
-    public Vehicule(String numeroSerie, String marque, String immatriculation, double prixJour, boolean etatLocation, int idContratLocation) {
+    public Vehicule(String numeroSerie, String marque, String immatriculation, double prixJour, boolean etatLocation, int idContratLocation, int idAgence) {
         this.numeroSerie = numeroSerie;
         this.marque = marque;
         this.immatriculation = immatriculation;
         this.prixJour = prixJour;
         this.etatLocation = etatLocation;
         this.idContratLocation = idContratLocation;
+        this.idAgence = idAgence;
     }
 
     public int getId() {  return id;  }
@@ -91,6 +95,10 @@ public class Vehicule {
 
     public void setIdContratLocation(int idContratLocation) { this.idContratLocation = idContratLocation;  }
 
+    public int getIdAgence() { return idAgence;  }
+
+    public void setIdAgence(int idAgence) { this.idAgence= idAgence;  }
+
     @Override
     public String toString() {
         return "Vehicule{" +
@@ -102,6 +110,7 @@ public class Vehicule {
                 ", etatLocation=" + etatLocation +
                 ", estRendu=" + estRendu +
                 ", idContratLocation=" + idContratLocation +
+                ", idAgence=" + idAgence+
                 '}';
     }
 }
