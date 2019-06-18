@@ -1,16 +1,35 @@
 package com.example.mim.model;
 
+import android.arch.persistence.room.ForeignKey;
 import android.provider.MediaStore;
 
 import java.util.Date;
 import java.util.List;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 
+@Entity(tableName = "etatsdeslieux", foreignKeys =
+    @ForeignKey(
+            entity = Vehicule.class,
+            parentColumns = "id",
+            childColumns = "id"
+    )
+)
 public class EtatDesLieux {
-
+    @PrimaryKey(autoGenerate = true)
     private int id;
+
+    @ColumnInfo(name = "dateetatdeslieux")
     private Date dateEtatDesLieux;
+
+    @ColumnInfo(name = "description")
     private String description;
+
+    @ColumnInfo(name = "levehicule")
     private Vehicule leVehicule;
+
+    @ColumnInfo(name = "photo")
     private List<MediaStore.Images.Media> lesPhotosEtatDesLieux;
 
     private EtatDesLieux(){}
