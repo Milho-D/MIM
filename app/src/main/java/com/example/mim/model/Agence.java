@@ -1,50 +1,84 @@
 package com.example.mim.model;
 
-import java.util.List;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
 
+@Entity(tableName = "agence", foreignKeys =
+        @ForeignKey(
+                entity = Gerant.class,
+                parentColumns = "id",
+                childColumns = "id_gerant",
+                onDelete = ForeignKey.SET_NULL
+        )
+
+        )
 public class Agence {
 
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     private int id;
+    @ColumnInfo(name = "nom")
     private String nom;
+    @ColumnInfo(name = "adresse")
     private String adresse;
-    private List<Vehicule>  lesVehicules;
+    @ColumnInfo(name = "chiffreAffaire")
     private double chiffreAffaire;
-    private Gerant unGerant;
+    @ColumnInfo(name = "id_gerant")
+    private int idGerant;
 
     private Agence() {}
 
-    public Agence(int id, String nom, String adresse, List<Vehicule> lesVehicules, double chiffreAffaire, Gerant unGerant) {
+    public Agence(int id, String nom, String adresse, double chiffreAffaire, int idGerant) {
         this.id = id;
         this.nom = nom;
         this.adresse = adresse;
-        this.lesVehicules = lesVehicules;
+
         this.chiffreAffaire = chiffreAffaire;
-        this.unGerant = unGerant;
+        this.idGerant = idGerant;
     }
 
-    public int getId() { return id;  }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) { this.id = id;  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getNom() { return nom;  }
+    public String getNom() {
+        return nom;
+    }
 
-    public void setNom(String nom) { this.nom = nom; }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-    public String getAdresse() { return adresse;   }
+    public String getAdresse() {
+        return adresse;
+    }
 
-    public void setAdresse(String adresse) { this.adresse = adresse; }
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
 
-    public List<Vehicule> getLesVehicules() { return lesVehicules; }
 
-    public void setLesVehicules(List<Vehicule> lesVehicules) { this.lesVehicules = lesVehicules; }
+    public double getChiffreAffaire() {
+        return chiffreAffaire;
+    }
 
-    public double getChiffreAffaire() { return chiffreAffaire; }
+    public void setChiffreAffaire(double chiffreAffaire) {
+        this.chiffreAffaire = chiffreAffaire;
+    }
 
-    public void setChiffreAffaire(double chiffreAffaire) { this.chiffreAffaire = chiffreAffaire; }
+    public int getIdGerant() {
+        return idGerant;
+    }
 
-    public Gerant getUnGerant() {  return unGerant; }
-
-    public void setUnGerant(Gerant unGerant) { this.unGerant = unGerant; }
+    public void setIdGerant(int idGerant) {
+        this.idGerant = idGerant;
+    }
 
     @Override
     public String toString() {
@@ -52,9 +86,8 @@ public class Agence {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", adresse='" + adresse + '\'' +
-                ", lesVehicules=" + lesVehicules +
                 ", chiffreAffaire=" + chiffreAffaire +
-                ", unGerant=" + unGerant +
+                ", idGerant=" + idGerant +
                 '}';
     }
 }
