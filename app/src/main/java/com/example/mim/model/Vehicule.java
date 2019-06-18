@@ -1,6 +1,7 @@
 package com.example.mim.model;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.provider.MediaStore;
@@ -35,6 +36,7 @@ public class Vehicule {
     @ColumnInfo(name="estRendu")
     private boolean estRendu;
 
+    @Embedded
     @ColumnInfo(name="leContratLocation")
     private ContratLocation leContratLocation;
 
