@@ -1,5 +1,6 @@
 package com.example.mim.model;
 
+import android.arch.persistence.room.ForeignKey;
 import android.provider.MediaStore;
 
 import java.util.Date;
@@ -8,7 +9,13 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "etatsdeslieux", foreignKeys =
+    @ForeignKey(
+            entity = Vehicule.class,
+            parentColumns = "id",
+            childColumns = "id"
+    )
+)
 public class EtatDesLieux {
     @PrimaryKey(autoGenerate = true)
     private int id;
