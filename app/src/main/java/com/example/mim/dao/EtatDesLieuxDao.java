@@ -8,13 +8,14 @@ import com.example.mim.model.ContratLocation;
 import com.example.mim.model.EtatDesLieux;
 
 import java.util.List;
+
 @Dao
 public interface EtatDesLieuxDao {
     @Query("SELECT * FROM etatdeslieux")
     List<EtatDesLieux> getAll();
 
-    @Query("SELECT * FROM etatdeslieux WHERE id IN (:Ids)")
-    List<EtatDesLieux> loadAllByIds(int[] Ids);
+    @Query("SELECT * FROM etatdeslieux WHERE id IN (:eIds)")
+    List<EtatDesLieux> loadAllByIds(int[] eIds);
 
     @Insert
     void insertAll(EtatDesLieux... etatDesLieux);

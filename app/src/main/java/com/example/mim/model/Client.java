@@ -3,6 +3,7 @@ package com.example.mim.model;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @Entity(tableName = "client")
 public class Client {
 
+    @ColumnInfo(name="id")
     @PrimaryKey(autoGenerate = true)
     private int id;
     @ColumnInfo(name = "nom")
@@ -23,7 +25,8 @@ public class Client {
     @ColumnInfo(name = "email")
     private String email;
 
-    private Client() {}
+    @Ignore
+    public Client() {}
 
     public Client(int id, String nom, String prenom, String adresse, int telephone, String email) {
         this.id = id;

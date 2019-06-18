@@ -1,7 +1,8 @@
 package com.example.mim.model;
 
 import android.arch.persistence.room.ForeignKey;
-import android.provider.MediaStore;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 
 import java.util.Date;
 import java.util.List;
@@ -9,37 +10,40 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "etatsdeslieux", foreignKeys =
-    @ForeignKey(
-            entity = Vehicule.class,
-            parentColumns = "id",
-            childColumns = "id"
-    )
+@Entity(
+        tableName = "etatdeslieux",
+        foreignKeys =
+            @ForeignKey(
+                    entity = Vehicule.class,
+                    parentColumns = "id",
+                    childColumns = "id_vehicule",
+                    onDelete = ForeignKey.SET_NULL
+            ),
+        indices = {@Index("id"), @Index("id_vehicule")}
 )
 public class EtatDesLieux {
+
+    @ColumnInfo(name="id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "dateetatdeslieux")
+    @ColumnInfo(name = "dateEtatDesLieux")
     private Date dateEtatDesLieux;
 
     @ColumnInfo(name = "description")
     private String description;
 
-    @ColumnInfo(name = "levehicule")
-    private Vehicule leVehicule;
+    @ColumnInfo(name = "id_vehicule")
+    private int idVehicule;
 
-    @ColumnInfo(name = "photo")
-    private List<MediaStore.Images.Media> lesPhotosEtatDesLieux;
+    @Ignore
+    public EtatDesLieux(){}
 
-    private EtatDesLieux(){}
-
-    public EtatDesLieux(int id, Date dateEtatDesLieux, String description, Vehicule leVehicule, List<MediaStore.Images.Media> lesPhotosEtatDesLieux) {
+    public EtatDesLieux(int id, Date dateEtatDesLieux, String description, int idVehicule) {
         this.id = id;
         this.dateEtatDesLieux = dateEtatDesLieux;
         this.description = description;
-        this.leVehicule = leVehicule;
-        this.lesPhotosEtatDesLieux = lesPhotosEtatDesLieux;
+        this.idVehicule = idVehicule;
     }
 
     public int getId() { return id;  }
@@ -54,13 +58,9 @@ public class EtatDesLieux {
 
     public void setDescription(String description) {  this.description = description;  }
 
-    public Vehicule getLeVehicule() { return leVehicule;  }
+    public int getIdVehicule() { return idVehicule;  }
 
-    public void setLeVehicule(Vehicule leVehicule) { this.leVehicule = leVehicule;  }
-
-    public List<MediaStore.Images.Media> getLesPhotosEtatDesLieux() { return lesPhotosEtatDesLieux; }
-
-    public void setLesPhotosEtatDesLieux(List<MediaStore.Images.Media> lesPhotosEtatDesLieux) { this.lesPhotosEtatDesLieux = lesPhotosEtatDesLieux;  }
+    public void setIdVehicule(int idVehicule) { this.idVehicule = idVehicule;  }
 
     @Override
     public String toString() {
@@ -68,8 +68,7 @@ public class EtatDesLieux {
                 "id=" + id +
                 ", dateEtatDesLieux=" + dateEtatDesLieux +
                 ", description='" + description + '\'' +
-                ", leVehicule=" + leVehicule +
-                ", lesPhotosEtatDesLieux=" + lesPhotosEtatDesLieux +
+                ", idVehicule=" + idVehicule +
                 '}';
     }
 }

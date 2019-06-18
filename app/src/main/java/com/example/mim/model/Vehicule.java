@@ -1,14 +1,25 @@
 package com.example.mim.model;
 
 import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
-import android.provider.MediaStore;
 
 import java.util.List;
 
-@Entity
+@Entity(
+        tableName = "vehicule",
+        foreignKeys =
+                @ForeignKey(
+                        entity = ContratLocation.class,
+                        parentColumns = "id",
+                        childColumns = "id_contratLocation",
+                        onDelete = ForeignKey.SET_NULL
+                ),
+        indices = {@Index("id"), @Index("id_contratLocation")}
+)
 public class Vehicule {
 
     @ColumnInfo(name = "id")
@@ -27,30 +38,25 @@ public class Vehicule {
     @ColumnInfo(name="prixJour")
     private double prixJour;
 
-    @ColumnInfo(name = "lesPhotosVehicule")
-    private List<MediaStore.Images.Media> lesPhotosVehicule;
-
     @ColumnInfo(name="etatLocation")
     private boolean etatLocation;
 
     @ColumnInfo(name="estRendu")
     private boolean estRendu;
 
-    @Embedded
-    @ColumnInfo(name="leContratLocation")
-    private ContratLocation leContratLocation;
+    @ColumnInfo(name="id_contratLocation")
+    private int idContratLocation;
 
-    private Vehicule() {}
+    @Ignore
+    public Vehicule() {}
 
-    public Vehicule(int id, String numeroSerie, String marque, String immatriculation, double prixJour, List<MediaStore.Images.Media> lesPhotosVehicule, boolean etatLocation, ContratLocation leContratLocation) {
-        this.id = id;
+    public Vehicule(String numeroSerie, String marque, String immatriculation, double prixJour, boolean etatLocation, int idContratLocation) {
         this.numeroSerie = numeroSerie;
         this.marque = marque;
         this.immatriculation = immatriculation;
         this.prixJour = prixJour;
-        this.lesPhotosVehicule = lesPhotosVehicule;
         this.etatLocation = etatLocation;
-        this.leContratLocation = leContratLocation;
+        this.idContratLocation = idContratLocation;
     }
 
     public int getId() {  return id;  }
@@ -73,21 +79,17 @@ public class Vehicule {
 
     public void setPrixJour(double prixJour) { this.prixJour = prixJour;  }
 
-    public List<MediaStore.Images.Media> getLesPhotosVehicule() { return lesPhotosVehicule;  }
-
-    public void setLesPhotosVehicule(List<MediaStore.Images.Media> lesPhotosVehicule) { this.lesPhotosVehicule = lesPhotosVehicule; }
-
     public boolean isEtatLocation() { return etatLocation;  }
 
     public void setEtatLocation(boolean etatLocation) { this.etatLocation = etatLocation;  }
-
-    public ContratLocation getLeContratLocation() { return leContratLocation;  }
 
     public boolean isEstRendu() { return estRendu;  }
 
     public void setEstRendu(boolean estRendu) { this.estRendu = estRendu;  }
 
-    public void setLeContratLocation(ContratLocation leContratLocation) { this.leContratLocation = leContratLocation;  }
+    public int getIdContratLocation() { return idContratLocation;  }
+
+    public void setIdContratLocation(int idContratLocation) { this.idContratLocation = idContratLocation;  }
 
     @Override
     public String toString() {
@@ -97,10 +99,9 @@ public class Vehicule {
                 ", marque='" + marque + '\'' +
                 ", immatriculation='" + immatriculation + '\'' +
                 ", prixJour=" + prixJour +
-                ", lesPhotosVehicule=" + lesPhotosVehicule +
                 ", etatLocation=" + etatLocation +
                 ", estRendu=" + estRendu +
-                ", leContratLocation=" + leContratLocation +
+                ", idContratLocation=" + idContratLocation +
                 '}';
     }
 }

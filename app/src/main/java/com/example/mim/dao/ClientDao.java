@@ -11,13 +11,13 @@ import java.util.List;
 
 @Dao
 public interface ClientDao {
-    @Query("select * from agence")
+    @Query("select * from client")
     List<Client> getAll();
 
-    @Query("select * from agence where id in (:ids)")
+    @Query("select * from client where id in (:ids)")
     List<Client> loadAlllByIds(int[] ids);
 
-    @Query("select * from agence where nom like :nom")
+    @Query("select * from client where nom like :nom")
     Client findByName(String nom);
 
     @Insert

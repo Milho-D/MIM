@@ -14,7 +14,7 @@ public interface ContratLocationDao {
     @Query("SELECT * FROM contratlocation")
     List<ContratLocation> getAll();
 
-    @Query("SELECT * FROM contratlocation WHERE id IN (:Ids)")
+    @Query("SELECT * FROM contratlocation WHERE id IN (:cIds)")
     List<ContratLocation> loadAllByIds(int[] cIds);
 
     @Insert

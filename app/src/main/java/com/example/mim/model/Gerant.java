@@ -1,12 +1,23 @@
 package com.example.mim.model;
 
 import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity
+@Entity(
+        tableName = "gerant",
+        foreignKeys =
+        @ForeignKey(
+                entity = Agence.class,
+                parentColumns = "id",
+                childColumns = "id_agence",
+                onDelete = ForeignKey.SET_NULL
+        ),
+        indices = {@Index("id"), @Index("id_agence")}
+)
 public class Gerant {
 
     @ColumnInfo(name = "id")
@@ -22,18 +33,17 @@ public class Gerant {
     @ColumnInfo(name="motdepasse")
     private String motDePasse;
 
-    @Embedded
-    @ColumnInfo(name="uneAgence")
-    private Agence uneAgence;
+    @ColumnInfo(name="id_agence")
+    private int idAgence;
 
-    public Gerant() { }
+    @Ignore
+    public Gerant() {}
 
-    public Gerant(int id, String nom, String prenom, String motDePasse, Agence uneAgence) {
-        this.id = id;
+    public Gerant(String nom, String prenom, String motDePasse, int idAgence) {
         this.nom = nom;
         this.prenom = prenom;
         this.motDePasse = motDePasse;
-        this.uneAgence = uneAgence;
+        this.idAgence = idAgence;
     }
 
     public int getId() { return id;  }
@@ -52,9 +62,9 @@ public class Gerant {
 
     public void setMotDePasse(String motDePasse) { this.motDePasse = motDePasse; }
 
-    public Agence getUneAgence() {  return uneAgence;  }
+    public int getIdAgence() {  return idAgence;  }
 
-    public void setUneAgence(Agence uneAgence) { this.uneAgence = uneAgence; }
+    public void setIdAgence(int idAgence) { this.idAgence = idAgence; }
 
     @Override
     public String toString() {
@@ -63,7 +73,7 @@ public class Gerant {
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
-                ", uneAgence=" + uneAgence +
+                ", idAgence=" + idAgence +
                 '}';
     }
 }

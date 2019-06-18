@@ -4,37 +4,52 @@ import java.util.Date;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "contratslocation", foreignKeys =
-    @ForeignKey(
-        entity = Client.class,
-        parentColumns = "id",
-        childColumns = "id"
-    )
+@Entity(
+        tableName = "contratlocation",
+        foreignKeys = {
+            @ForeignKey(
+                entity = Client.class,
+                parentColumns = "id",
+                childColumns = "id_client",
+                onDelete = ForeignKey.SET_NULL
+            ),
+            @ForeignKey(
+                entity = Vehicule.class,
+                parentColumns = "id",
+                childColumns = "id_vehicule",
+                onDelete = ForeignKey.SET_NULL
+            )},
+        indices = {@Index("id"), @Index("id_client"), @Index("id_vehicule")}
     )
 public class ContratLocation {
+
+    @ColumnInfo(name="id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "leclient")
-    private Client leClient;
+    @ColumnInfo(name = "id_client")
+    private int idClient;
 
-    @ColumnInfo(name = "levehicule")
-    private Vehicule leVehicule;
+    @ColumnInfo(name = "id_vehicule")
+    private int idVehicule;
 
-    @ColumnInfo(name = "dateenlevement")
+    @ColumnInfo(name = "dateEnlevement")
     private Date dateEnlevement;
 
-    @ColumnInfo(name = "daterestitution")
+    @ColumnInfo(name = "dateRestitution")
     private Date dateRestitution;
 
-    private ContratLocation() {}
+    @Ignore
+    public ContratLocation() {}
 
-    public ContratLocation(int id, Client leClient, Vehicule leVehicule, Date dateEnlevement, Date dateRestitution) {
+    public ContratLocation(int id, int idClient, int idVehicule, Date dateEnlevement, Date dateRestitution) {
         this.id = id;
-        this.leClient = leClient;
-        this.leVehicule = leVehicule;
+        this.idClient = idClient;
+        this.idVehicule = idVehicule;
         this.dateEnlevement = dateEnlevement;
         this.dateRestitution = dateRestitution;
     }
@@ -43,13 +58,13 @@ public class ContratLocation {
 
     public void setId(int id) { this.id = id;  }
 
-    public Client getLeClient() {return leClient;  }
+    public int getIdClient() {return idClient;  }
 
-    public void setLeClient(Client leClient) { this.leClient = leClient;  }
+    public void setIdClient(int idClient) { this.idClient = idClient;  }
 
-    public Vehicule getLeVehicule() {  return leVehicule;  }
+    public int getIdVehicule() {  return idVehicule;  }
 
-    public void setLeVehicule(Vehicule leVehicule) { this.leVehicule = leVehicule;  }
+    public void setIdVehicule(int idVehicule) { this.idVehicule = idVehicule;  }
 
     public Date getDateEnlevement() { return dateEnlevement;  }
 
@@ -63,8 +78,8 @@ public class ContratLocation {
     public String toString() {
         return "ContratLocation{" +
                 "id=" + id +
-                ", leClient=" + leClient +
-                ", leVehicule=" + leVehicule +
+                ", idClient=" + idClient +
+                ", idVehicule=" + idVehicule +
                 ", dateEnlevement=" + dateEnlevement +
                 ", dateRestitution=" + dateRestitution +
                 '}';

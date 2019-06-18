@@ -3,17 +3,21 @@ package com.example.mim.model;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "agence", foreignKeys =
-        @ForeignKey(
-                entity = Gerant.class,
-                parentColumns = "id",
-                childColumns = "id_gerant",
-                onDelete = ForeignKey.SET_NULL
-        )
-
-        )
+@Entity(
+        tableName = "agence",
+        foreignKeys =
+            @ForeignKey(
+                    entity = Gerant.class,
+                    parentColumns = "id",
+                    childColumns = "id_gerant",
+                    onDelete = ForeignKey.SET_NULL
+            ),
+        indices = {@Index("id"), @Index("id_gerant")}
+)
 public class Agence {
 
     @PrimaryKey(autoGenerate = true)
@@ -28,7 +32,8 @@ public class Agence {
     @ColumnInfo(name = "id_gerant")
     private int idGerant;
 
-    private Agence() {}
+    @Ignore
+    public Agence() {}
 
     public Agence(int id, String nom, String adresse, double chiffreAffaire, int idGerant) {
         this.id = id;
