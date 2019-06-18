@@ -1,11 +1,29 @@
 package com.example.mim.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Embedded;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
+
+@Entity
 public class Gerant {
 
+    @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
     private int id;
+
+    @ColumnInfo(name="nom")
     private String nom;
+
+    @ColumnInfo(name="prenom")
     private String prenom;
+
+    @ColumnInfo(name="motdepasse")
     private String motDePasse;
+
+    @Embedded
+    @ColumnInfo(name="uneAgence")
     private Agence uneAgence;
 
     public Gerant() { }
@@ -37,7 +55,6 @@ public class Gerant {
     public Agence getUneAgence() {  return uneAgence;  }
 
     public void setUneAgence(Agence uneAgence) { this.uneAgence = uneAgence; }
-
 
     @Override
     public String toString() {
