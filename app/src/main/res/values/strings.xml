@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">mim</string>
+    <string name="app_name">MIM</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">MIM</string>
     <string name="nav_header_subtitle">Location de véhicules</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Paramètres</string>
-
-
+    <string name="contrat_location_form">Contrat de Location</string>
+    <string name="etatdeslieux_form">Etat des Lieux</string>
     <string name="acc_search_label">Rechercher un véhicule</string>
 </resources>
