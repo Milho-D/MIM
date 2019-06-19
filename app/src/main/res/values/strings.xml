@@ -6,5 +6,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="contrat_location_form">Formulaire de Location</string>
+    <string name="contrat_location_form">Contrat de Location</string>
+    <string name="etatdeslieux_form">Etat des Lieux</string>
 </resources>
