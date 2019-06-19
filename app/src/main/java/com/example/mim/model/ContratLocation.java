@@ -26,7 +26,6 @@ import android.arch.persistence.room.PrimaryKey;
         indices = {@Index("id"), @Index("id_client"), @Index("id_vehicule")}
     )
 public class ContratLocation {
-
     @ColumnInfo(name="id")
     @PrimaryKey(autoGenerate = true)
     private int id;
