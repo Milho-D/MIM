@@ -9,7 +9,7 @@
     tools:showIn="@layout/app_bar_main"
     tools:context=".MainActivity">
 
-    <TextView
+    <!--TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,6 +35,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.276">
-    </SearchView>
+    </SearchView-->
 
 </android.support.constraint.ConstraintLayout>

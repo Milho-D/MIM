@@ -53,7 +53,7 @@ public class VehiculeListAdapter extends RecyclerView.Adapter<VehiculeListAdapte
         }
     }
 
-    void setVehicules(List<Vehicule> listeVehicules) {
+    public void setVehicules(List<Vehicule> listeVehicules) {
         lesVehicules = listeVehicules;
         notifyDataSetChanged();
     }
