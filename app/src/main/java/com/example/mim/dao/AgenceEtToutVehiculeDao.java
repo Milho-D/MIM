@@ -5,7 +5,6 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Transaction;
 
 import com.example.mim.model.AgenceEtToutVehicule;
-import com.example.mim.model.ClientEtToutContrat;
 
 @Dao
 public interface AgenceEtToutVehiculeDao {

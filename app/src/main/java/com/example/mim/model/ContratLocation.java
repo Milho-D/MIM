@@ -45,8 +45,7 @@ public class ContratLocation {
     @Ignore
     public ContratLocation() {}
 
-    public ContratLocation(int id, int idClient, int idVehicule, Date dateEnlevement, Date dateRestitution) {
-        this.id = id;
+    public ContratLocation(int idClient, int idVehicule, Date dateEnlevement, Date dateRestitution) {
         this.idClient = idClient;
         this.idVehicule = idVehicule;
         this.dateEnlevement = dateEnlevement;

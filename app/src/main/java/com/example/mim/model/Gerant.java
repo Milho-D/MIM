@@ -16,7 +16,7 @@ import android.arch.persistence.room.PrimaryKey;
                 childColumns = "id_agence",
                 onDelete = ForeignKey.SET_NULL
         ),
-        indices = {@Index("id"), @Index("id_agence")}
+        indices = {@Index("id"),@Index("id_agence")}
 )
 public class Gerant {
 

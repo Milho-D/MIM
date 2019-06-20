@@ -7,17 +7,7 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(
-        tableName = "agence",
-        foreignKeys =
-            @ForeignKey(
-                    entity = Gerant.class,
-                    parentColumns = "id",
-                    childColumns = "id_gerant",
-                    onDelete = ForeignKey.SET_NULL
-            ),
-        indices = {@Index("id"), @Index("id_gerant")}
-)
+@Entity(tableName = "agence")
 public class Agence {
 
     @PrimaryKey(autoGenerate = true)
@@ -29,19 +19,15 @@ public class Agence {
     private String adresse;
     @ColumnInfo(name = "chiffreAffaire")
     private double chiffreAffaire;
-    @ColumnInfo(name = "id_gerant")
-    private int idGerant;
 
     @Ignore
     public Agence() {}
 
-    public Agence(int id, String nom, String adresse, double chiffreAffaire, int idGerant) {
-        this.id = id;
+    public Agence(String nom, String adresse, double chiffreAffaire) {
         this.nom = nom;
         this.adresse = adresse;
 
         this.chiffreAffaire = chiffreAffaire;
-        this.idGerant = idGerant;
     }
 
     public int getId() {
@@ -77,13 +63,7 @@ public class Agence {
         this.chiffreAffaire = chiffreAffaire;
     }
 
-    public int getIdGerant() {
-        return idGerant;
-    }
 
-    public void setIdGerant(int idGerant) {
-        this.idGerant = idGerant;
-    }
 
     @Override
     public String toString() {
@@ -92,7 +72,6 @@ public class Agence {
                 ", nom='" + nom + '\'' +
                 ", adresse='" + adresse + '\'' +
                 ", chiffreAffaire=" + chiffreAffaire +
-                ", idGerant=" + idGerant +
                 '}';
     }
 }

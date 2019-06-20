@@ -24,4 +24,7 @@ public interface ContratLocationDao {
     @Delete
     void delete(ContratLocation contratLocation);
 
+    @Query("DELETE FROM contratlocation")
+    void deleteAll();
+
 }

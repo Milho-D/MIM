@@ -40,6 +40,18 @@
         android:layout_marginTop="@dimen/v_big_padding"
         android:textSize="18sp"/>
 
+    <EditText
+        android:id="@+id/edit_v_agence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_v_immat"
+        android:inputType="textAutoComplete"
+        android:padding="@dimen/v_small_padding"
+        android:layout_marginBottom="@dimen/v_big_padding"
+        android:layout_marginTop="@dimen/v_big_padding"
+        android:textSize="18sp"/>
+
     <Button
         android:id="@+id/v_btn_save"
         android:layout_width="match_parent"

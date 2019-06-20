@@ -25,4 +25,7 @@ public interface ClientDao {
 
     @Delete
     void delete(Client client);
+
+    @Query("DELETE FROM client")
+    void deleteAll();
 }
