@@ -1,4 +1,4 @@
-package com.example.mim.viewholders;
+package com.example.mim.adapters;
 
-public class ContratLocationListAdapter extends RecyclerView.Adapter<ContratLocationListAdapter.ContratLocationViewHolder>{
+public class ContratLocationListAdapter{
 }
