@@ -11,21 +11,21 @@ import com.example.mim.model.ContratLocation;
 import java.util.List;
 
 public class ContratLocationRepository {
+
     private ContratLocationDao contratLocationDao;
+
     private LiveData<List<ContratLocation>> getAllContratLocation;
 
-    ContratLocationRepository(Application application){
+   public ContratLocationRepository(Application application)
+    {
         AppDatabase db = Connexion.getConnexion(application);
-
         contratLocationDao = db.contratLocationDao();
         getAllContratLocation = contratLocationDao.getAll();
     }
 
-
     public LiveData<List<ContratLocation>> getAllContratLocation() {
         return getAllContratLocation;
     }
-
 
     public void insert(ContratLocation contratLocation){
         new ContratLocationRepository.insertAsync(contratLocationDao).execute(contratLocation);

@@ -13,12 +13,12 @@ import java.util.List;
 
 
 public class EtatDesLieuxRepository {
+
     private EtatDesLieuxDao etatDesLieuxDao;
     private LiveData<List<EtatDesLieux>> getAllEtatDesLieux;
 
-    EtatDesLieuxRepository(Application application){
+    public EtatDesLieuxRepository(Application application){
         AppDatabase db = Connexion.getConnexion(application);
-
         etatDesLieuxDao = db.etatDesLieuxDao();
         getAllEtatDesLieux = etatDesLieuxDao.getAll();
     }
@@ -36,7 +36,6 @@ public class EtatDesLieuxRepository {
     private static class insertAsync extends AsyncTask<EtatDesLieux,Void,Void> {
 
         private EtatDesLieuxDao etatDesLieuxDaosync;
-
         insertAsync(EtatDesLieuxDao etatDesLieuxDao){
             etatDesLieuxDaosync = etatDesLieuxDao ;
         }
@@ -46,6 +45,5 @@ public class EtatDesLieuxRepository {
             etatDesLieuxDaosync.insertAll(etatDesLieuxes);
             return null;
         }
-
     }
 }
