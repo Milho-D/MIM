@@ -1,8 +1,10 @@
 package com.example.mim.dao;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import com.example.mim.model.Agence;
@@ -14,7 +16,7 @@ import java.util.List;
 public interface VehiculeDao {
 
     @Query("SELECT * FROM vehicule")
-    List<Vehicule> getAllVehicules();
+    LiveData<List<Vehicule>> getAll();
 
     @Query("SELECT * FROM vehicule WHERE id = :idsVehicule LIMIT 1")
     Vehicule loadAllVehiculesById(int[] idsVehicule);
@@ -34,9 +36,12 @@ public interface VehiculeDao {
     @Query("SELECT * FROM vehicule WHERE id = :vehiculeId AND estRendu = :vehiculeEstRendu")
     Vehicule findByVehiculeRendu(int vehiculeId, boolean vehiculeEstRendu);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Vehicule... vehicules);
 
     @Delete
     void delete(Vehicule vehicule);
+
+    @Query("DELETE FROM vehicule")
+    void deleteAll();
 }
