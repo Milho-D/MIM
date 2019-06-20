@@ -53,12 +53,13 @@ public class Vehicule {
     @Ignore
     public Vehicule() {}
 
-    public Vehicule(String numeroSerie, String marque, String immatriculation, double prixJour, boolean etatLocation, int idContratLocation, int idAgence) {
+    public Vehicule(String numeroSerie, String marque, String immatriculation, double prixJour, boolean etatLocation, boolean estRendu, int idContratLocation, int idAgence) {
         this.numeroSerie = numeroSerie;
         this.marque = marque;
         this.immatriculation = immatriculation;
         this.prixJour = prixJour;
         this.etatLocation = etatLocation;
+        this.estRendu = estRendu;
         this.idContratLocation = idContratLocation;
         this.idAgence = idAgence;
     }
