@@ -1,4 +1,4 @@
-package com.example.mim.model;
+package com.example.mim.model.utils;
 
 import android.arch.persistence.room.TypeConverter;
 
