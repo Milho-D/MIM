@@ -1,5 +1,6 @@
 package com.example.mim.dao;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -12,10 +13,10 @@ import java.util.List;
 @Dao
 public interface ContratLocationDao {
     @Query("SELECT * FROM contratlocation")
-    List<ContratLocation> getAll();
+    LiveData<List<ContratLocation>> getAll();
 
     @Query("SELECT * FROM contratlocation WHERE id IN (:cIds)")
-    List<ContratLocation> loadAllByIds(int[] cIds);
+    LiveData<List<ContratLocation>> loadAllByIds(int[] cIds);
 
     @Insert
     void insertAll(ContratLocation... contratLocations);
