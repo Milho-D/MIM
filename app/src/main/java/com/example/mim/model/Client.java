@@ -28,8 +28,7 @@ public class Client {
     @Ignore
     public Client() {}
 
-    public Client(int id, String nom, String prenom, String adresse, int telephone, String email) {
-        this.id = id;
+    public Client(String nom, String prenom, String adresse, int telephone, String email) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;

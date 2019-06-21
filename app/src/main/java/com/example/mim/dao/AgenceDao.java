@@ -27,4 +27,7 @@ public interface AgenceDao {
 
     @Delete
     void delete(Agence agence);
+
+    @Query("DELETE FROM agence")
+    void deleteAll();
 }

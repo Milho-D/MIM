@@ -10,18 +10,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
-import java.util.List;
 
 @Entity(
         tableName = "vehicule",
         foreignKeys =
                 @ForeignKey(
-                        entity = ContratLocation.class,
+                        entity = Agence.class,
                         parentColumns = "id",
-                        childColumns = "id_contratLocation",
+                        childColumns = "id_agence",
                         onDelete = ForeignKey.SET_NULL
                 ),
-        indices = {@Index("id"), @Index("id_contratLocation")}
+        indices = {@Index("id"), @Index("id_agence")}
 )
 public class Vehicule implements Parcelable {
 
@@ -50,25 +49,22 @@ public class Vehicule implements Parcelable {
     @ColumnInfo(name="estRendu")
     private boolean estRendu;
 
-    @ColumnInfo(name="id_contratLocation")
-    private int idContratLocation;
-
     @ColumnInfo(name="id_agence")
     private int idAgence;
 
     @Ignore
     public Vehicule() {}
 
-    public Vehicule(String numeroSerie, String marque, String immatriculation, double prixJour, boolean etatLocation, boolean estRendu, int idContratLocation, int idAgence) {
+    public Vehicule(String numeroSerie, String marque, String immatriculation, double prixJour, boolean etatLocation, boolean estRendu, int idAgence) {
         this.numeroSerie = numeroSerie;
         this.marque = marque;
         this.immatriculation = immatriculation;
         this.prixJour = prixJour;
         this.etatLocation = etatLocation;
         this.estRendu = estRendu;
-        this.idContratLocation = idContratLocation;
         this.idAgence = idAgence;
     }
+
 
     protected Vehicule(Parcel in) {
         id = in.readInt();
@@ -78,7 +74,6 @@ public class Vehicule implements Parcelable {
         prixJour = in.readDouble();
         etatLocation = in.readByte() != 0;
         estRendu = in.readByte() != 0;
-        idContratLocation = in.readInt();
         idAgence = in.readInt();
     }
 
@@ -91,7 +86,6 @@ public class Vehicule implements Parcelable {
         dest.writeDouble(prixJour);
         dest.writeByte((byte) (etatLocation ? 1 : 0));
         dest.writeByte((byte) (estRendu ? 1 : 0));
-        dest.writeInt(idContratLocation);
         dest.writeInt(idAgence);
     }
 
@@ -140,10 +134,6 @@ public class Vehicule implements Parcelable {
 
     public void setEstRendu(boolean estRendu) { this.estRendu = estRendu;  }
 
-    public int getIdContratLocation() { return idContratLocation;  }
-
-    public void setIdContratLocation(int idContratLocation) { this.idContratLocation = idContratLocation;  }
-
     public int getIdAgence() { return idAgence;  }
 
     public void setIdAgence(int idAgence) { this.idAgence= idAgence;  }
@@ -158,7 +148,6 @@ public class Vehicule implements Parcelable {
                 ", prixJour=" + prixJour +
                 ", etatLocation=" + etatLocation +
                 ", estRendu=" + estRendu +
-                ", idContratLocation=" + idContratLocation +
                 ", idAgence=" + idAgence+
                 '}';
     }
