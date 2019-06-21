@@ -50,33 +50,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-        // partie véhicules
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final VehiculeListAdapter adapter = new VehiculeListAdapter(this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        vehiculeViewModel = ViewModelProviders.of(this).get(VehiculeViewModel.class);
-        // ajout d'un observer pour LiveData
-        vehiculeViewModel.getAllVehicules().observe(this, new Observer<List<Vehicule>>() {
-            @Override
-            public void onChanged(@Nullable List<Vehicule> vehicules) {
-                // met à jour la copie mise en cache des véhicules dans l'adapter
-                adapter.setVehicules(vehicules);
-            }
-        });
-
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NewVehiculeActivity.class);
-                startActivityForResult(intent, NEW_VEHICULE_ACTIVITY_REQUEST_CODE);
-            }
-        }));*/
     }
 
     @Override

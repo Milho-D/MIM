@@ -15,7 +15,7 @@ public class AgenceRepository {
     private AgenceDao agenceDao;
     private LiveData<List<Agence>> getAllAgence;
 
-    AgenceRepository(Application application){
+    public AgenceRepository(Application application){
         AppDatabase db = Connexion.getConnexion(application);
         //Agence
         agenceDao = db.agenceDao();
