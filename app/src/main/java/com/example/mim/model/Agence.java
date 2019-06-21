@@ -12,7 +12,7 @@ public class Agence {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private int id;
+    private long id;
     @ColumnInfo(name = "nom")
     private String nom;
     @ColumnInfo(name = "adresse")
@@ -30,11 +30,11 @@ public class Agence {
         this.chiffreAffaire = chiffreAffaire;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

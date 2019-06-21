@@ -21,7 +21,7 @@ public interface ClientDao {
     Client findByName(String nom);
 
     @Insert
-    void  insertAll(Client... clients);
+    long[] insertAll(Client... clients);
 
     @Delete
     void delete(Client client);

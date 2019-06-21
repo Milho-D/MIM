@@ -26,7 +26,7 @@ public class Vehicule implements Parcelable {
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private long id;
 
     @NonNull
     @ColumnInfo(name="numeroSerie")
@@ -50,12 +50,12 @@ public class Vehicule implements Parcelable {
     private boolean estRendu;
 
     @ColumnInfo(name="id_agence")
-    private int idAgence;
+    private long idAgence;
 
     @Ignore
     public Vehicule() {}
 
-    public Vehicule(String numeroSerie, String marque, String immatriculation, double prixJour, boolean etatLocation, boolean estRendu, int idAgence) {
+    public Vehicule(String numeroSerie, String marque, String immatriculation, double prixJour, boolean etatLocation, boolean estRendu, long idAgence) {
         this.numeroSerie = numeroSerie;
         this.marque = marque;
         this.immatriculation = immatriculation;
@@ -79,14 +79,14 @@ public class Vehicule implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
+        dest.writeLong(id);
         dest.writeString(numeroSerie);
         dest.writeString(marque);
         dest.writeString(immatriculation);
         dest.writeDouble(prixJour);
         dest.writeByte((byte) (etatLocation ? 1 : 0));
         dest.writeByte((byte) (estRendu ? 1 : 0));
-        dest.writeInt(idAgence);
+        dest.writeLong(idAgence);
     }
 
     @Override
@@ -106,9 +106,9 @@ public class Vehicule implements Parcelable {
         }
     };
 
-    public int getId() {  return id;  }
+    public long getId() {  return id;  }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(long id) { this.id = id; }
 
     public String getNumeroSerie() { return numeroSerie;  }
 
@@ -134,9 +134,9 @@ public class Vehicule implements Parcelable {
 
     public void setEstRendu(boolean estRendu) { this.estRendu = estRendu;  }
 
-    public int getIdAgence() { return idAgence;  }
+    public long getIdAgence() { return idAgence;  }
 
-    public void setIdAgence(int idAgence) { this.idAgence= idAgence;  }
+    public void setIdAgence(long idAgence) { this.idAgence= idAgence;  }
 
     @Override
     public String toString() {

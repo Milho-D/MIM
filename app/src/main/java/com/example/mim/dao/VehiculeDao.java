@@ -15,7 +15,7 @@ import java.util.List;
 @Dao
 public interface VehiculeDao {
 
-    @Query("SELECT * FROM vehicule")
+    @Query("SELECT * FROM vehicule ORDER BY numeroSerie ASC")
     LiveData<List<Vehicule>> getAll();
 
     @Query("SELECT * FROM vehicule WHERE id = :idsVehicule LIMIT 1")
@@ -37,7 +37,7 @@ public interface VehiculeDao {
     Vehicule findByVehiculeRendu(int vehiculeId, boolean vehiculeEstRendu);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(Vehicule... vehicules);
+    long[] insertAll(Vehicule... vehicules);
 
     @Delete
     void delete(Vehicule vehicule);

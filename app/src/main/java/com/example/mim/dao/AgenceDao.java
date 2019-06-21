@@ -23,7 +23,7 @@ public interface AgenceDao {
     Agence findByName(String nom);
 
     @Insert
-    void insertAll(Agence... agences);
+    long[] insertAll(Agence... agences);
 
     @Delete
     void delete(Agence agence);

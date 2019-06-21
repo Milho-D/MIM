@@ -28,13 +28,13 @@ import android.arch.persistence.room.PrimaryKey;
 public class ContratLocation {
     @ColumnInfo(name="id")
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private long id;
 
     @ColumnInfo(name = "id_client")
-    private int idClient;
+    private long idClient;
 
     @ColumnInfo(name = "id_vehicule")
-    private int idVehicule;
+    private long idVehicule;
 
     @ColumnInfo(name = "dateEnlevement")
     private Date dateEnlevement;
@@ -45,24 +45,24 @@ public class ContratLocation {
     @Ignore
     public ContratLocation() {}
 
-    public ContratLocation(int idClient, int idVehicule, Date dateEnlevement, Date dateRestitution) {
+    public ContratLocation(long idClient, long idVehicule, Date dateEnlevement, Date dateRestitution) {
         this.idClient = idClient;
         this.idVehicule = idVehicule;
         this.dateEnlevement = dateEnlevement;
         this.dateRestitution = dateRestitution;
     }
 
-    public int getId() { return id;  }
+    public long getId() { return id;  }
 
-    public void setId(int id) { this.id = id;  }
+    public void setId(long id) { this.id = id;  }
 
-    public int getIdClient() {return idClient;  }
+    public long getIdClient() {return idClient;  }
 
-    public void setIdClient(int idClient) { this.idClient = idClient;  }
+    public void setIdClient(long idClient) { this.idClient = idClient;  }
 
-    public int getIdVehicule() {  return idVehicule;  }
+    public long getIdVehicule() {  return idVehicule;  }
 
-    public void setIdVehicule(int idVehicule) { this.idVehicule = idVehicule;  }
+    public void setIdVehicule(long idVehicule) { this.idVehicule = idVehicule;  }
 
     public Date getDateEnlevement() { return dateEnlevement;  }
 

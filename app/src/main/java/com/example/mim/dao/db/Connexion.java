@@ -19,7 +19,6 @@ public class Connexion {
 
     private static volatile AppDatabase CONNEXION;
 
-
     /**
      *singleton de la connexion
      *Evite d'avoir plusieur instance ouverte

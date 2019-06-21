@@ -14,6 +14,7 @@ import com.example.mim.model.Vehicule;
 
 public class NewVehiculeActivity extends AppCompatActivity {
 
+
     private EditText editNumeroSerieView;
     private EditText editMarqueView;
     private EditText editImmatriculationView;

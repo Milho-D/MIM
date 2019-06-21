@@ -19,7 +19,7 @@ public interface ContratLocationDao {
     LiveData<List<ContratLocation>> loadAllByIds(int[] cIds);
 
     @Insert
-    void insertAll(ContratLocation... contratLocations);
+    long[] insertAll(ContratLocation... contratLocations);
 
     @Delete
     void delete(ContratLocation contratLocation);

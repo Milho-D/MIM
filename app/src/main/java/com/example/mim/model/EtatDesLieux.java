@@ -25,7 +25,7 @@ public class EtatDesLieux {
 
     @ColumnInfo(name="id")
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private long id;
 
     @ColumnInfo(name = "dateEtatDesLieux")
     private Date dateEtatDesLieux;
@@ -34,21 +34,21 @@ public class EtatDesLieux {
     private String description;
 
     @ColumnInfo(name = "id_vehicule")
-    private int idVehicule;
+    private long idVehicule;
 
     @Ignore
     public EtatDesLieux(){}
 
-    public EtatDesLieux(int id, Date dateEtatDesLieux, String description, int idVehicule) {
+    public EtatDesLieux(long id, Date dateEtatDesLieux, String description, long idVehicule) {
         this.id = id;
         this.dateEtatDesLieux = dateEtatDesLieux;
         this.description = description;
         this.idVehicule = idVehicule;
     }
 
-    public int getId() { return id;  }
+    public long getId() { return id;  }
 
-    public void setId(int id) { this.id = id;  }
+    public void setId(long id) { this.id = id;  }
 
     public Date getDateEtatDesLieux() { return dateEtatDesLieux;  }
 
@@ -58,9 +58,9 @@ public class EtatDesLieux {
 
     public void setDescription(String description) {  this.description = description;  }
 
-    public int getIdVehicule() { return idVehicule;  }
+    public long getIdVehicule() { return idVehicule;  }
 
-    public void setIdVehicule(int idVehicule) { this.idVehicule = idVehicule;  }
+    public void setIdVehicule(long idVehicule) { this.idVehicule = idVehicule;  }
 
     @Override
     public String toString() {

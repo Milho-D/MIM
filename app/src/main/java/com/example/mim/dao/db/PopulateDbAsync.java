@@ -12,7 +12,6 @@ import com.example.mim.model.Client;
 import com.example.mim.model.ContratLocation;
 import com.example.mim.model.Gerant;
 import com.example.mim.model.Vehicule;
-import com.example.mim.model.utils.DateConverter;
 
 import java.util.Date;
 
@@ -40,35 +39,37 @@ class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
         // Not needed if you only populate on creation.
 
         //Génération d'une agence
-        agenceDao.deleteAll();
+        //agenceDao.deleteAll();
         Agence theShield = new Agence("The Shield", "New York DC", 120045210.12);
-        agenceDao.insertAll(theShield);
-
+        long[] agenceIds = agenceDao.insertAll(theShield);
+        theShield.setId( agenceIds[0]);
         //Génération d'un client
-        clientDao.deleteAll();
+        //clientDao.deleteAll();
         Client loki = new Client("God","Loki", "Azgard", 0213, "loki@mail.god");
-        clientDao.insertAll(loki);
+        long[] clientIds = clientDao.insertAll(loki);
+        loki.setId(clientIds[0]);
 
         //Génération d'un gérant
-        gerantDao.deleteAll();
+        //gerantDao.deleteAll();
         Gerant tStark = new Gerant("Stark", "Tony", "ironman", theShield.getId());
-        gerantDao.insertAll(tStark);
+        long[] gerantIds = gerantDao.insertAll(tStark);
+        tStark.setId(gerantIds[0]);
 
         // Génération de véhicules
-        vehiculeDao.deleteAll();
+        //vehiculeDao.deleteAll();
         Vehicule delorean = new Vehicule("DMC-12", "Delorean","OUT-A-TIME", 250.00, false,  false,theShield.getId());
         Vehicule falconMillenium = new Vehicule("Millenium", "Falcon","OUT-A-SPACE", 520.00, false,  false ,theShield.getId());
         Vehicule batMobile = new Vehicule("confidentiel", "WayneCorp","OUTATIME", 300.00, false,  false,theShield.getId());
-        vehiculeDao.insertAll(delorean, falconMillenium, batMobile);
+        long[] vehiculeIds = vehiculeDao.insertAll(delorean, falconMillenium, batMobile);
+        delorean.setId(vehiculeIds[0]);
+        falconMillenium.setId(vehiculeIds[1]);
+        batMobile.setId(vehiculeIds[2]);
 
         //Génération d'un contrat de location
-        contratLocationDao.deleteAll();
+        //contratLocationDao.deleteAll();
         ContratLocation contratLoc = new ContratLocation(loki.getId(), delorean.getId(), new Date(), new Date());
-        contratLocationDao.insertAll(contratLoc);
-
-
-
-
+        long[] contratLocIds = contratLocationDao.insertAll(contratLoc);
+        contratLoc.setId(contratLocIds[0]);
 
         return null;
     }

@@ -22,7 +22,7 @@ public class Gerant {
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private long id;
 
     @ColumnInfo(name="nom")
     private String nom;
@@ -34,21 +34,21 @@ public class Gerant {
     private String motDePasse;
 
     @ColumnInfo(name="id_agence")
-    private int idAgence;
+    private long idAgence;
 
     @Ignore
     public Gerant() {}
 
-    public Gerant(String nom, String prenom, String motDePasse, int idAgence) {
+    public Gerant(String nom, String prenom, String motDePasse, long idAgence) {
         this.nom = nom;
         this.prenom = prenom;
         this.motDePasse = motDePasse;
         this.idAgence = idAgence;
     }
 
-    public int getId() { return id;  }
+    public long getId() { return id;  }
 
-    public void setId(int id) { this.id = id;  }
+    public void setId(long id) { this.id = id;  }
 
     public String getNom() { return nom;  }
 
@@ -62,9 +62,9 @@ public class Gerant {
 
     public void setMotDePasse(String motDePasse) { this.motDePasse = motDePasse; }
 
-    public int getIdAgence() {  return idAgence;  }
+    public long getIdAgence() {  return idAgence;  }
 
-    public void setIdAgence(int idAgence) { this.idAgence = idAgence; }
+    public void setIdAgence(long idAgence) { this.idAgence = idAgence; }
 
     @Override
     public String toString() {
