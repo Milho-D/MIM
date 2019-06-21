@@ -1,8 +1,14 @@
 package com.example.mim;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,9 +18,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.example.mim.activities.NewVehiculeActivity;
+import com.example.mim.adapters.VehiculeListAdapter;
+import com.example.mim.model.Vehicule;
+import com.example.mim.model.viewmodels.VehiculeViewModel;
+
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private VehiculeViewModel vehiculeViewModel;
+
+    public static final int NEW_VEHICULE_ACTIVITY_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +41,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,6 +50,33 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        // partie véhicules
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        final VehiculeListAdapter adapter = new VehiculeListAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        vehiculeViewModel = ViewModelProviders.of(this).get(VehiculeViewModel.class);
+        // ajout d'un observer pour LiveData
+        vehiculeViewModel.getAllVehicules().observe(this, new Observer<List<Vehicule>>() {
+            @Override
+            public void onChanged(@Nullable List<Vehicule> vehicules) {
+                // met à jour la copie mise en cache des véhicules dans l'adapter
+                adapter.setVehicules(vehicules);
+            }
+        });
+
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NewVehiculeActivity.class);
+                startActivityForResult(intent, NEW_VEHICULE_ACTIVITY_REQUEST_CODE);
+            }
+        }));*/
     }
 
     @Override
@@ -97,5 +134,23 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == NEW_VEHICULE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+
+
+            Vehicule vehicule = data.getParcelableExtra("vehicule");
+            vehiculeViewModel.insert(vehicule);
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    R.string.v_empty_not_save,
+                    Toast.LENGTH_LONG
+            ).show();
+        }
+
     }
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/edit_v_numserie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_v_numserie"
+        android:inputType="textAutoComplete"
+        android:padding="@dimen/v_small_padding"
+        android:layout_marginBottom="@dimen/v_big_padding"
+        android:layout_marginTop="@dimen/v_big_padding"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/edit_v_marque"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_v_marque"
+        android:inputType="textAutoComplete"
+        android:padding="@dimen/v_small_padding"
+        android:layout_marginBottom="@dimen/v_big_padding"
+        android:layout_marginTop="@dimen/v_big_padding"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/edit_v_immat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_v_immat"
+        android:inputType="textAutoComplete"
+        android:padding="@dimen/v_small_padding"
+        android:layout_marginBottom="@dimen/v_big_padding"
+        android:layout_marginTop="@dimen/v_big_padding"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/v_btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/v_btn_save"
+        android:textColor="@color/buttonLabel"/>
+</LinearLayout>

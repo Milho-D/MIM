@@ -8,5 +8,12 @@
     <string name="action_settings">Paramètres</string>
     <string name="contrat_location_form">Contrat de Location</string>
     <string name="etatdeslieux_form">Etat des Lieux</string>
+
+    <!-- partie vehicules -->
     <string name="acc_search_label">Rechercher un véhicule</string>
+    <string name="hint_v_numserie">Numéro de Série</string>
+    <string name="hint_v_marque">Marque</string>
+    <string name="hint_v_immat">Immatriculation</string>
+    <string name="v_btn_save">Enregistrer</string>
+    <string name="v_empty_not_save">Le véhicule n\'est pas sauvegardé car il est vide.</string>
 </resources>

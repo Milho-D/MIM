@@ -5,8 +5,8 @@ import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
 import com.example.mim.dao.AgenceDao;
-import com.example.mim.dao.AppDatabase;
-import com.example.mim.dao.Connexion;
+import com.example.mim.dao.db.AppDatabase;
+import com.example.mim.dao.db.Connexion;
 import com.example.mim.model.Agence;
 
 import java.util.List;

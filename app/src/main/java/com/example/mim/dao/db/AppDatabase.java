@@ -1,9 +1,19 @@
-package com.example.mim.dao;
+package com.example.mim.dao.db;
+import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverter;
 import android.arch.persistence.room.TypeConverters;
+import android.support.annotation.NonNull;
 
+import com.example.mim.dao.AgenceDao;
+import com.example.mim.dao.AgenceEtToutVehiculeDao;
+import com.example.mim.dao.ClientContratDao;
+import com.example.mim.dao.ClientDao;
+import com.example.mim.dao.ContratLocationDao;
+import com.example.mim.dao.EtatDesLieuxDao;
+import com.example.mim.dao.GerantDao;
+import com.example.mim.dao.VehiculeDao;
 import com.example.mim.model.Agence;
 import com.example.mim.model.AgenceEtToutVehicule;
 import com.example.mim.model.Client;
@@ -39,5 +49,7 @@ public abstract class AppDatabase extends RoomDatabase
     public abstract ClientDao clientDao();
     public abstract ClientContratDao clientContratDao();
     public abstract AgenceEtToutVehiculeDao agenceEtToutVehiculeDao();
+
+
 
 }
